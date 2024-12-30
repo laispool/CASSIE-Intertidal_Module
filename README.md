@@ -1,6 +1,6 @@
 # Waterline Detection and Exporting GEE Code 
 
-This repository contains a script to detect waterlines using Water Indices, based on [Mason et al (1995)](https://www.researchgate.net/publication/253023601_Construction_of_an_inter-tidal_digital_elevation_model_by_the_'Water-Line'_Method) Waterline Method,from satellite imagery and export the results to Google Drive. The code leverages the TPXO tide signal to match waterline images with tide data for accurate topographic mapping. 
+This repository contains a script to detect waterlines using Water Indices, based on [Mason et al (1995)](https://www.researchgate.net/publication/253023601_Construction_of_an_inter-tidal_digital_elevation_model_by_the_'Water-Line'_Method) Waterline Method, from satellite imagery and export the results to Google Drive. The code leverages the TPXO tide signal to match waterline images with tide data for accurate topographic mapping. 
 This README provides instructions on how to run the code for the example area of interest and modify it for other areas of interest.
 
 ---
@@ -55,7 +55,7 @@ Once the code is loaded in the Google Earth Engine by pasting the provided "inte
 
 After running the code, the resulting waterlines will be displayed on the map with the appropriate color-coded layers for each time step.
 
-[Insert image of the Exporting Task]
+![image](https://github.com/user-attachments/assets/79d392ac-7af0-4e4d-bdac-6428f642ec33)
 
 
 ### 4. **Export the Result to Google Drive**
@@ -63,7 +63,7 @@ After running the code, the resulting waterlines will be displayed on the map wi
 Also, the results will be ready to be exported to your Google Drive as a shapefile (.SHP). Below is an example of the exporting task displayed in the Google Earth Engine console.
 Once the task is complete (which may take a while), the waterline shapefiles can be downloaded to your local computer. They will include properties for the tide and image datetime, allowing you to check the reliability of the values, as well as the tide elevation value.
 
-[Insert image of the Result on the Map]
+![image](https://github.com/user-attachments/assets/f0e750f3-9c03-4304-a64e-610b283946f9)
 
 ---
 
