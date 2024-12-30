@@ -37,7 +37,6 @@ The code requires an asset to run correctly. An example is located in the `input
 
 - **Satellite Imagery**: The script processes satellite imagery from an image collection. If you would like to test with another set of images, follow the instructions below to modify the image ID.
 
----
 
 ### 2. **Running the Exporting Task**
 
@@ -49,8 +48,6 @@ Once the code is loaded in the Google Earth Engine by pasting the provided "inte
 2. **Press Run**:
    Press "Run" in the Earth Engine Code Editor. This will execute the script and initiate the exporting task. The script will process the waterline detection and return the results. This may take a while. 
 
-
----
 
 ### 3. **View the Result on the Map**
 
@@ -94,7 +91,8 @@ If you want to run the script for a different area, replace the geometry coordin
     If you wish to test with another image collection, refer to the corresponding code in the folder for retrieving the image IDs. Ensure the images are processed and filtered with respect to your region of interest.
 
 ### 2. Change Tide Signal Asset
-    To use a different tide signal file, modify the line that imports the TPXO tide signal by the asset path. For instance:
+    
+   To use a different tide signal file, modify the line that imports the TPXO tide signal by the asset path. For instance:
 
     ```javascript
     var tideGauge = ee.FeatureCollection('users/yourusername/tpxo_tide_signal'); // Replace 'users/yourusername/tpxo_tide_signal' with the correct asset ID for your tide signal data.
@@ -103,12 +101,14 @@ If you want to run the script for a different area, replace the geometry coordin
 #### Handling the File Headers:
 
 You need to modify the file headers before importing the tide signal file so the code runs correctly. Ensure the following headers are used:
-    - **"Date"** (format: dd/MM/yyyy)
-    - **"Time"** (format: HH:mm:ss)  
-    - **"Value"** (decimal separator as a dot)
-    - Comma-Separated File (.CSV)
+   
+   - **"Date"** (format: dd/MM/yyyy)
+   - **"Time"** (format: HH:mm:ss)  
+   - **"Value"** (decimal separator as a dot)
+   - Comma-Separated File (.CSV)
 
-    If your elevation value is defined in meters, the resulting shapefile data will use the same unit. The reference level of the resulting data will be the same as the input tide signal data. Pay attention to this. If you need a different reference level, you must preprocess the tide signal file before importing it into the GEE asset or handle it in a GIS software afterward.
+   If your elevation value is defined in meters, the resulting shapefile data will use the same unit. The reference level of the resulting data will be the same as the input tide signal data. Pay attention to this. If you need a different reference level, you must preprocess the tide signal file before importing it into the GEE asset or handle it in a GIS software afterward.
+
 
 ---
 
@@ -117,12 +117,13 @@ You need to modify the file headers before importing the tide signal file so the
 - **Error with asset path**: Double-check the paths to the assets (geometry, tide signal and image IDs). You can import assets to Google Earth Engine via the Earth Engine Asset Manager.
 - **No results on the map**: Ensure the region you are analyzing has adequate satellite image coverage and the geometry file correctly bounds the area of interest.
 
+
 ---
 
 ## License
 
 The code is public, open, and free, provided under the Creative Commons CC-BY-SA license. The source must be referenced in the following format:
 
-    CASSIE - accessed on [date] via the link: https://cassiengine.org/
+   CASSIE - accessed on [date] via the link: https://cassiengine.org/
 
 ---
