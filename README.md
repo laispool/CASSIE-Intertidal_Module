@@ -93,14 +93,14 @@ If you want to run the script for a different area, replace the geometry coordin
     ```
     If you wish to test with another image collection, refer to the corresponding code in the folder for retrieving the image IDs. Ensure the images are processed and filtered with respect to your region of interest.
 
-3. Change Tide Signal Asset
+### 2. Change Tide Signal Asset
     To use a different tide signal file, modify the line that imports the TPXO tide signal by the asset path. For instance:
 
     ```javascript
     var tideGauge = ee.FeatureCollection('users/yourusername/tpxo_tide_signal'); // Replace 'users/yourusername/tpxo_tide_signal' with the correct asset ID for your tide signal data.
     ```
 
-### Handling the File Headers:
+#### Handling the File Headers:
 
 You need to modify the file headers before importing the tide signal file so the code runs correctly. Ensure the following headers are used:
     - **"Date"** (format: dd/MM/yyyy)
