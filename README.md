@@ -49,13 +49,14 @@ Once the code is loaded in the Google Earth Engine by pasting the provided "inte
 2. **Press Run**:
    Press "Run" in the Earth Engine Code Editor. This will execute the script and initiate the exporting task. The script will process the waterline detection and return the results. This may take a while. 
 
+
 ---
 
 ### 3. **View the Result on the Map**
 
 After running the code, the resulting waterlines will be displayed on the map with the appropriate color-coded layers for each time step.
 
-![image](https://github.com/user-attachments/assets/79d392ac-7af0-4e4d-bdac-6428f642ec33)
+![image](https://github.com/user-attachments/assets/f0e750f3-9c03-4304-a64e-610b283946f9)
 
 
 ### 4. **Export the Result to Google Drive**
@@ -63,7 +64,8 @@ After running the code, the resulting waterlines will be displayed on the map wi
 Also, the results will be ready to be exported to your Google Drive as a shapefile (.SHP). Below is an example of the exporting task displayed in the Google Earth Engine console.
 Once the task is complete (which may take a while), the waterline shapefiles can be downloaded to your local computer. They will include properties for the tide and image datetime, allowing you to check the reliability of the values, as well as the tide elevation value.
 
-![image](https://github.com/user-attachments/assets/f0e750f3-9c03-4304-a64e-610b283946f9)
+![image](https://github.com/user-attachments/assets/79d392ac-7af0-4e4d-bdac-6428f642ec33)
+
 
 ---
 
