@@ -1,8 +1,9 @@
 # Waterline Detection and Exporting GEE Code 
 
-This repository contains a script to detect waterlines using Water Indices, based on [Mason et al (1995)](https://www.researchgate.net/publication/253023601_Construction_of_an_inter-tidal_digital_elevation_model_by_the_'Water-Line'_Method) Waterline Method, from satellite imagery and export the results to Google Drive. The code leverages the TPXO tide signal to match waterline images with tide data for accurate topographic mapping. 
+This repository contains a script to detect waterlines using Water Indices, based on [Mason et al (1995)](https://www.researchgate.net/publication/253023601_Construction_of_an_inter-tidal_digital_elevation_model_by_the_'Water-Line'_Method) Waterline Method, from satellite imagery and export the results to Google Drive. The code leverages the TPXO tide signal to match waterline images with tide data for accurate topographic mapping.<br>
 This README provides instructions on how to run the code for the example area of interest and modify it for other areas of interest.
 
+<br>
 ---
 
 ## Table of Contents
@@ -11,18 +12,19 @@ This README provides instructions on how to run the code for the example area of
 - [Customizing the Code](#customizing-the-code)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
-
+<br>
 ---
 
 ## Prerequisites
 
 Before running the code, ensure the following:
-
+<br>
 1. **Google Earth Engine (GEE) Account**: You must have a Google Earth Engine account. [Sign up here](https://signup.earthengine.google.com/).
 2. **TPXO Asset**: The script uses a tide signal dataset from TPXO. The asset is available under the "input_asset" folder. Ensure the correct asset is imported from Google Earth Engine.
 3. **Code Editor**: Use the Google Earth Engine code editor to run the script.
 4. **Tide Signal Files**: Make sure you have the necessary assets in your Google Earth Engine account. You may need to adjust the paths to these files.
-
+<br>
+<br>
 ---
 
 ## Running the Code
@@ -36,8 +38,7 @@ The code requires an asset to run correctly. An example is located in the `input
 - **Area Geometry**: This variable defines the region of interest where the waterline detection will occur. You don't need to change this to run the example; only modify if you want to test another area.
 
 - **Satellite Imagery**: The script processes satellite imagery from an image collection. If you would like to test with another set of images, follow the instructions below to modify the image ID.
-
-
+<br>
 ### 2. **Running the Exporting Task**
 
 Once the code is loaded in the Google Earth Engine by pasting the provided "intertidal_topography_estimation" script from this repository as a repository on Code Editor, follow these steps:
@@ -47,15 +48,14 @@ Once the code is loaded in the Google Earth Engine by pasting the provided "inte
 
 2. **Press Run**:
    Press "Run" in the Earth Engine Code Editor. This will execute the script and initiate the exporting task. The script will process the waterline detection and return the results. This may take a while. 
-
-
+<br>
 ### 3. **View the Result on the Map**
 
 After running the code, the resulting waterlines will be displayed on the map with the appropriate color-coded layers for each time step.
 
 ![image](https://github.com/user-attachments/assets/f0e750f3-9c03-4304-a64e-610b283946f9)
 
-
+<br>
 ### 4. **Export the Result to Google Drive**
 
 Also, the results will be ready to be exported to your Google Drive as a shapefile (.SHP). Below is an example of the exporting task displayed in the Google Earth Engine console.
@@ -63,7 +63,8 @@ Once the task is complete (which may take a while), the waterline shapefiles can
 
 ![image](https://github.com/user-attachments/assets/79d392ac-7af0-4e4d-bdac-6428f642ec33)
 
-
+<br>
+<br>
 ---
 
 ## Customizing the Code
@@ -78,46 +79,46 @@ If you want to run the script for a different area, replace the geometry coordin
     ```javascript
     var geometry = ee.Geometry.Polygon([[[...], [...], [...], [...]]]);  // Replace with your coordinates
     ```
-
+<br>
 2. Change Image Collection (Images ID)
     To use a different satellite image collection, create a new file on GEE Code Editor and run following lines:
 
-    ```javascript
-    var imageCollectionWithDatetime = ee.ImageCollection('COPERNICUS/S2_HARMONIZED')
-        .filterDate('2022-01-01', '2022-12-31') // Choose your period of interest
-        .filterBounds(geometry); // Address your geometry file (you must define the geometry first)
-        .filter('CLOUDY_PIXEL_PERCENTAGE < 5') // Choose the acceptable cloud coverage percentage
-    ```
-    If you wish to test with another image collection, refer to the corresponding code in the folder for retrieving the image IDs. Ensure the images are processed and filtered with respect to your region of interest.
-
+   ```javascript
+   var imageCollectionWithDatetime = ee.ImageCollection('COPERNICUS/S2_HARMONIZED')
+       .filterDate('2022-01-01', '2022-12-31') // Choose your period of interest
+       .filterBounds(geometry); // Address your geometry file (you must define the geometry first)
+       .filter('CLOUDY_PIXEL_PERCENTAGE < 5') // Choose the acceptable cloud coverage percentage
+   ```
+   If you wish to test with another image collection, refer to the corresponding code in the folder for retrieving the image IDs. Ensure the images are processed and filtered with respect to your region of interest.
+<br>
 ### 2. Change Tide Signal Asset
     
    To use a different tide signal file, modify the line that imports the TPXO tide signal by the asset path. For instance:
 
-    ```javascript
-    var tideGauge = ee.FeatureCollection('users/yourusername/tpxo_tide_signal'); // Replace 'users/yourusername/tpxo_tide_signal' with the correct asset ID for your tide signal data.
-    ```
-
+   ```javascript
+   var tideGauge = ee.FeatureCollection('users/yourusername/tpxo_tide_signal'); // Replace 'users/yourusername/tpxo_tide_signal' with the correct asset ID for your tide signal data.
+   ```
+<br>
 #### Handling the File Headers:
 
-You need to modify the file headers before importing the tide signal file so the code runs correctly. Ensure the following headers are used:
+You need to modify the file headers before importing the tide signal file so the code runs correctly. Ensure the following headers are used: 
    
    - **"Date"** (format: dd/MM/yyyy)
    - **"Time"** (format: HH:mm:ss)  
    - **"Value"** (decimal separator as a dot)
    - Comma-Separated File (.CSV)
-
+<br>
    If your elevation value is defined in meters, the resulting shapefile data will use the same unit. The reference level of the resulting data will be the same as the input tide signal data. Pay attention to this. If you need a different reference level, you must preprocess the tide signal file before importing it into the GEE asset or handle it in a GIS software afterward.
-
-
+<br>
+<br>
 ---
 
 ## Troubleshooting
 
 - **Error with asset path**: Double-check the paths to the assets (geometry, tide signal and image IDs). You can import assets to Google Earth Engine via the Earth Engine Asset Manager.
 - **No results on the map**: Ensure the region you are analyzing has adequate satellite image coverage and the geometry file correctly bounds the area of interest.
-
-
+<br>
+<br>
 ---
 
 ## License
